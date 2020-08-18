@@ -18,7 +18,7 @@ function App() {
     const response = await api.post('repositories', {
       title: `Novo projeto ${Date.now()}`,
       url: 'www.github.com/projeto-novo',
-      techs: 'ReactJS'
+      techs: ['ReactJS', 'TypeScript']
     });
 
     const repository = response.data;
@@ -40,7 +40,7 @@ function App() {
           <li key={repository.id} >
             {repository.title}<br/>
             {repository.url}<br/>
-            {repository.techs}<br/>
+            {repository.techs + '  '}<br/>
               <button onClick={() => handleRemoveRepository(repository.id)}>
                 Remover
               </button>
