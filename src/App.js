@@ -14,17 +14,19 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    
-    const response = await api.post('repositories', {
-      title: `Novo projeto ${Date.now()}`,
-      url: 'www.github.com/projeto-novo',
-      techs: ['ReactJS', 'TypeScript']
-    });
+    try{
+      const response = await api.post('repositories', {
+        title: `Novo projeto ${Date.now()}`,
+        url: 'www.github.com/projeto-novo',
+        techs: ['ReactJS', 'TypeScript']
+      });
 
-    const repository = response.data;
+      const repository = response.data;
 
-    setRepositories([...repositories, repository]);
-
+      setRepositories([...repositories, repository]);
+    }catch (err) {
+      console.error(err.message);
+    }
   }
 
   async function handleRemoveRepository(id) {
@@ -34,13 +36,10 @@ function App() {
 
   return (
     <div>
-      <h1> Lista de repositórios</h1>
       <ul data-testid="repository-list">
-        {repositories.map(repository => 
+        {repositories.map((repository) => 
           <li key={repository.id} >
-            {repository.title}<br/>
-            {repository.url}<br/>
-            {repository.techs + '  '}<br/>
+            {repository.title}
               <button onClick={() => handleRemoveRepository(repository.id)}>
                 Remover
               </button>
