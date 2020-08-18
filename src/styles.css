@@ -2,9 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  align-items: center;
 }
 
 body {
+  align-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 14px;
 }
 
@@ -36,4 +39,10 @@ button {
 div li button {
   margin: 0 15px;
   background: #ca4949;
+}
+
+h1 {
+  font-size: 52px;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
